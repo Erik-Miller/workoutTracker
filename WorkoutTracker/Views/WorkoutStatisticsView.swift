@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WorkoutStatisticsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Statistics for your workouts, coming soon!")
     }
 }
 

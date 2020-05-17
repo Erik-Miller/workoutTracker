@@ -9,13 +9,16 @@
 import SwiftUI
 
 struct WorkoutDetailView: View {
+    
+    let workout: Workout
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("This is the workout detail view")
+            Text(workout.title)
+            Text(workout.description)
+        }
     }
 }
 
-struct WorkoutDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        WorkoutDetailView()
-    }
-}
+

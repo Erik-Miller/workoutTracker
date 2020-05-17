@@ -7,3 +7,29 @@
 //
 
 import Foundation
+import Combine
+
+class WorkoutCellViewModel: ObservableObject, Identifiable{
+    
+    @Published var workout: Workout
+    
+    var id = ""
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    
+    init(workout: Workout){
+        self.workout = workout
+        
+        $workout
+            .map { workout in
+                (workout.id ?? "")
+                // this may not need to be force unwrapped later
+        }
+        .assign(to: \.id, on: self)
+        .store(in: &cancellables)
+    
+}
+}
+    
+

@@ -9,8 +9,23 @@
 import SwiftUI
 
 struct AddWorkoutView: View {
+    
+    @State private var workoutTitle = ""
+    @State private var workoutDescription = ""
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            VStack(alignment: .leading){
+                Form{
+                Text("Workout Title")
+                TextField("Title", text: $workoutTitle)
+                Text("Workout Description")
+                TextField("Description", text: $workoutDescription)
+                }
+        }
+        .navigationBarTitle("Add Workout")
+        }
     }
 }
 

@@ -9,8 +9,50 @@
 import SwiftUI
 
 struct WorkoutListView: View {
+    
+    @ObservedObject var workoutListVM = WorkoutListViewModel()
+    
+    @State private var showAddWorkoutForm = false
+    
+    //let currentDate = Calendar.dateComponents([.day], from: MCL_CURRENT)
+    let workouts = testDataWorkouts
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            VStack{
+                List{
+                    ForEach(workoutListVM.workoutCellViewModels){ workoutCellVM in
+                        WorkoutCell(workoutCellVM: workoutCellVM)
+                    }
+                }
+            }
+            .navigationBarItems(trailing: Button(action: {
+                print("Add New Workout Tapped")
+            }) {
+                HStack{
+                    Image(systemName: "plus.circle")
+                    Text("Add Workout")
+                }
+               
+            })
+            .navigationBarTitle("Workouts")
+        }
+    }
+}
+           
+struct WorkoutCell: View {
+    
+    @ObservedObject var workoutCellVM: WorkoutCellViewModel
+
+    
+    var body: some View {
+        VStack(alignment: .leading){
+            NavigationLink(destination: WorkoutDetailView(workout: workoutCellVM.workout)){
+                Text(workoutCellVM.workout.title)
+            Text(workoutCellVM.workout.description)
+        }
+        }
     }
 }
 
