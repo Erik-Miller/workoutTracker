@@ -28,7 +28,7 @@ struct WorkoutListView: View {
                 }
             }
             .navigationBarItems(trailing: Button(action: {
-                print("Add New Workout Tapped")
+                self.showAddWorkoutForm.toggle()
             }) {
                 HStack{
                     Image(systemName: "plus.circle")
@@ -37,9 +37,15 @@ struct WorkoutListView: View {
                
             })
             .navigationBarTitle("Workouts")
+            
+            .sheet(isPresented: $showAddWorkoutForm){
+                    AddWorkoutView()
+            }
+            
+                
+            }
         }
     }
-}
            
 struct WorkoutCell: View {
     
